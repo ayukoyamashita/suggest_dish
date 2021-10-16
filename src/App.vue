@@ -11,5 +11,6 @@
 
   * {
     color: $color-text;
+    font-family: YuGothic,sans-serif;
   }
 </style>
