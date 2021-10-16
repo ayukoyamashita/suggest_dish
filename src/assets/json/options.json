@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "text": "",
+    "tastes": {
+      "heat": 0,
+      "oily": 0,
+      "salty": 0,
+      "solid": 0,
+      "sweetness": 0
+    }
+  }
+]
