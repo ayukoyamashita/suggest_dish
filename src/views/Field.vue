@@ -1,10 +1,6 @@
 <template>
-    <div>
-        <input v-model="tastes.heat" type="range" min="0" max="10">
-        <input v-model="tastes.oily" type="range" min="0" max="10">
-        <input v-model="tastes.salty" type="range" min="0" max="10">
-        <input v-model="tastes.solid" type="range" min="0" max="10">
-        <input v-model="tastes.sweetness" type="range" min="0" max="10">
+    <div v-for="q in questions" :key="q.id">
+        <Question :question="q" :options="options[q.id]" />
     </div>
 
     <button @click="suggest">Suggest</button>
@@ -19,8 +15,14 @@
     import { useStore } from 'vuex';
     import { useRouter } from 'vue-router';
 
+    import Question from '../components/Question';
+
+    import questionList from '../assets/json/questions.json';
+    import optionList from '../assets/json/options.json';
+
     export default {
         name: "Field",
+        components:{ Question },
         setup() {
             const store = useStore();
             const dishes = ref([]);
@@ -32,6 +34,8 @@
                 solid: 0,
                 sweetness: 0
             });
+            const questions = ref([]);
+            const options = ref({});
 
             const init = () => {
                 dishes.value = store.state.dishes;
@@ -48,6 +52,25 @@
                     Object.keys(tastes.value).forEach(k => {
                         tastes.value[k] = tastes.value[k] / dishes.value.length;
                     });
+                }
+                setQuestions();
+            }
+
+            const setQuestions = () => {
+                let indexes = [];
+                while(indexes.length < 5){
+                    let n = Math.floor(Math.random() * questionList.length);
+                    if (!indexes.includes(n)){
+                        indexes.push(n);
+                        let q = questionList[n]
+                        questions.value.push(q);
+
+                        options.value[q.id] = [];
+                        q.options.forEach((i) => {
+                            let option = optionList.filter(o => o.id === i);
+                            options.value[q.id] = options.value[q.id].concat(option);
+                        });
+                    }
                 }
             }
 
@@ -71,7 +94,7 @@
 
             onMounted(init);
 
-            return {dishes, result, tastes, suggest}
+            return {result, suggest, questions, options}
         }
     }
 </script>
