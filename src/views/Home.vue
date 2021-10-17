@@ -105,10 +105,10 @@
                 left: 0;
                 width: 100%;
                 transition: opacity .4s;
-                opacity: .8;
+                opacity: .7;
 
                 &:hover {
-                    opacity: 1;
+                    opacity: .95;
                 }
 
                 &_content {
@@ -122,7 +122,7 @@
                         left: 0;
                         border-style: solid;
                         border-width: 0 0 20vh 100vw;
-                        border-color: transparent transparent $color-main transparent;
+                        border-color: transparent transparent #fff transparent;
                         z-index: 0;
                     }
 
@@ -130,7 +130,7 @@
                     .el_text {
                         position: relative;
                         width: 100%;
-                        background: $color-base;
+                        background: $color-main;
                         height: 30vh;
 
                         &::before {
@@ -138,7 +138,7 @@
                             display: block;
                             height: 1vh;
                             width: 100%;
-                            background-color: $color-main;
+                            background-color: #fff;
                         }
                         &::after {
                             content: '';
@@ -147,7 +147,7 @@
                             left: 0;
                             border-style: solid;
                             border-width: 0 0 19vh 100vw;
-                            border-color: transparent transparent $color-base transparent;
+                            border-color: transparent transparent $color-main transparent;
                             padding-top: 2vh;
                             z-index: 0;
                         }
@@ -160,7 +160,7 @@
                             max-width: 200px;
                             transform: rotate(-10deg) translateX(30%) scale(1.3, 1);
                             z-index: 1;
-                            fill: $color-main;
+                            fill: #fff;
                         }
                     }
                 }

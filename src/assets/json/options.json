@@ -1,13 +1,442 @@
 [
   {
     "id": 1,
-    "text": "",
+    "text": "晴れ",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": 1,
+      "solid": -0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 2,
+    "text": "雨",
+    "tastes": {
+      "heat": 1,
+      "oily": -0.5,
+      "salty": 0,
+      "solid": 0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 3,
+    "text": "曇り",
+    "tastes": {
+      "heat": 0.5,
+      "oily": -0.5,
+      "salty": -0.5,
+      "solid": 0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 4,
+    "text": "雪",
+    "tastes": {
+      "heat": 1,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": -1,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 5,
+    "text": "春",
+    "tastes": {
+      "heat": 0.5,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 6,
+    "text": "夏",
+    "tastes": {
+      "heat": 1,
+      "oily": 1,
+      "salty": 1,
+      "solid": 0.5,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 7,
+    "text": "秋",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 8,
+    "text": "冬",
+    "tastes": {
+      "heat": 1,
+      "oily": 0,
+      "salty": -0.5,
+      "solid": -1,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 9,
+    "text": "山",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -0.5,
+      "salty": -0.5,
+      "solid": -0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 10,
+    "text": "谷",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": 0
+    }
+  },
+  {
+    "id": 11,
+    "text": "海",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 1,
+      "salty": 1,
+      "solid": 0,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 12,
+    "text": "川",
+    "tastes": {
+      "heat": 0,
+      "oily": -1,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 13,
+    "text": "北",
+    "tastes": {
+      "heat": -1,
+      "oily": -1,
+      "salty": 0,
+      "solid": -1,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 14,
+    "text": "西",
+    "tastes": {
+      "heat": 0,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": 0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 15,
+    "text": "南",
+    "tastes": {
+      "heat": 1,
+      "oily": 1,
+      "salty": 1,
+      "solid": 0.5,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 16,
+    "text": "東",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": 0
+    }
+  },
+  {
+    "id": 17,
+    "text": "暑い",
+    "tastes": {
+      "heat": -1,
+      "oily": 1,
+      "salty": 1,
+      "solid": -1,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 18,
+    "text": "暖かい",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": 0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 19,
+    "text": "寒い",
+    "tastes": {
+      "heat": 1,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": -1,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 20,
+    "text": "涼しい",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": -0.5,
+      "solid": -0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 21,
+    "text": "最高",
+    "tastes": {
+      "heat": 1,
+      "oily": 1,
+      "salty": 1,
+      "solid": 1,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 22,
+    "text": "良い",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": 0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 23,
+    "text": "普通",
     "tastes": {
       "heat": 0,
       "oily": 0,
       "salty": 0,
       "solid": 0,
       "sweetness": 0
+    }
+  },
+  {
+    "id": 24,
+    "text": "いまいち",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -0.5,
+      "salty": -0.5,
+      "solid": -0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 25,
+    "text": "赤",
+    "tastes": {
+      "heat": 1,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": 0.5,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 26,
+    "text": "青",
+    "tastes": {
+      "heat": -1,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": -1,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 27,
+    "text": "黄",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": 0,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 28,
+    "text": "緑",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -1,
+      "salty": -0.5,
+      "solid": -0.5,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 29,
+    "text": "ピンク",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": -0.5,
+      "solid": 0,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 30,
+    "text": "オレンジ",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 31,
+    "text": "黄緑",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -1,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 32,
+    "text": "水色",
+    "tastes": {
+      "heat": -1,
+      "oily": -1,
+      "salty": 1,
+      "solid": -1,
+      "sweetness": -1
+    }
+  },
+  {
+    "id": 33,
+    "text": "車",
+    "tastes": {
+      "heat": 0.5,
+      "oily": -0.5,
+      "salty": 0,
+      "solid": 1,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 34,
+    "text": "電車",
+    "tastes": {
+      "heat": -0.5,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": 0,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 35,
+    "text": "船",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": -1,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 36,
+    "text": "飛行機",
+    "tastes": {
+      "heat": 1,
+      "oily": -1,
+      "salty": 0.5,
+      "solid": 1,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 37,
+    "text": "朝",
+    "tastes": {
+      "heat": 0,
+      "oily": -1,
+      "salty": 0,
+      "solid": -0.5,
+      "sweetness": 0.5
+    }
+  },
+  {
+    "id": 38,
+    "text": "昼",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": 0.5,
+      "sweetness": -0.5
+    }
+  },
+  {
+    "id": 39,
+    "text": "夕方",
+    "tastes": {
+      "heat": -0.5,
+      "oily": 0.5,
+      "salty": 0.5,
+      "solid": 1,
+      "sweetness": 1
+    }
+  },
+  {
+    "id": 40,
+    "text": "夜",
+    "tastes": {
+      "heat": 0.5,
+      "oily": 1,
+      "salty": 0.5,
+      "solid": -0.5,
+      "sweetness": 0.5
     }
   }
 ]
