@@ -70,7 +70,7 @@
 
             &_img {
                 width: 20%;
-                max-width: 100px;
+                max-width: 110px;
                 filter: blur(2px) brightness(75%) contrast(50%);
             }
         }
