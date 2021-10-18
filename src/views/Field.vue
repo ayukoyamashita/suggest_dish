@@ -1,4 +1,18 @@
 <template>
+    <div class="top">
+        <div class="top_progress">
+            <p class="top_progress_now">Q1</p>
+            <p class="top_progress_max">5</p>
+        </div>
+
+        <div class="top_title">
+            <router-link :to="{ name: 'Home'}">
+
+            </router-link>
+            <svg class="top_title_img"><use xlink:href="../assets/images/logo.svg#logo"></use></svg>
+        </div>
+    </div>
+
     <div v-for="q in questions" :key="q.id">
         <Question :question="q" :options="options[q.id]" />
     </div>
@@ -8,6 +22,8 @@
     <div v-if="Object.keys(result).length > 0">
         <router-link :to="{ name: 'Result', params: { id: result.id} }" >結果({{ result.id }})を見る</router-link>
     </div>
+
+
 </template>
 
 <script>
@@ -102,5 +118,13 @@
 <style scoped lang="scss">
     @import '../assets/scss/_settings.scss';
 
+    .top {
+        &_title {
+            &_img {
+                fill: $color-text;
+                width: 30%;
+            }
+        }
+    }
 
 </style>
