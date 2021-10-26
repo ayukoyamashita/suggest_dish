@@ -1,29 +1,26 @@
 <template>
-    <div class="top">
-        <div class="top_progress">
-            <p class="top_progress_now">Q1</p>
-            <p class="top_progress_max">5</p>
+    <section class="content">
+        <div class="top">
+            <div class="top_progress">
+                <p class="top_progress_now">Q{{ progress }}</p>
+                <p class="top_progress_max">{{ questions.length }}</p>
+            </div>
+
+            <div class="top_title">
+                <router-link :to="{ name: 'Home'}">
+
+                </router-link>
+                <svg class="top_title_img"><use xlink:href="../assets/images/logo.svg#logo"></use></svg>
+            </div>
         </div>
 
-        <div class="top_title">
-            <router-link :to="{ name: 'Home'}">
-
-            </router-link>
-            <svg class="top_title_img"><use xlink:href="../assets/images/logo.svg#logo"></use></svg>
+        <div class="main">
+            <svg class="main_img"><use xlink:href="../assets/images/question.svg#question"></use></svg>
+            <div v-for="(q, i) in questions" :key="q.id">
+                <Question :question="q" :options="options[q.id]" v-if="progress === (i + 1)" @selectEvent="selectOption" />
+            </div>
         </div>
-    </div>
-
-    <div v-for="q in questions" :key="q.id">
-        <Question :question="q" :options="options[q.id]" />
-    </div>
-
-    <button @click="suggest">Suggest</button>
-
-    <div v-if="Object.keys(result).length > 0">
-        <router-link :to="{ name: 'Result', params: { id: result.id} }" >結果({{ result.id }})を見る</router-link>
-    </div>
-
-
+    </section>
 </template>
 
 <script>
@@ -40,6 +37,7 @@
         name: "Field",
         components:{ Question },
         setup() {
+            const router = useRouter();
             const store = useStore();
             const dishes = ref([]);
             const result = ref({});
@@ -52,6 +50,7 @@
             });
             const questions = ref([]);
             const options = ref({});
+            const progress = ref(1);
 
             const init = () => {
                 dishes.value = store.state.dishes;
@@ -108,9 +107,25 @@
                 result.value = min_d;
             }
 
+            const selectOption = (id) => {
+                calculateTastes(id);
+                if( progress.value === questions.value.length) {
+                    suggest();
+                    router.push({ name: 'Result', params: { id: result.value.id }});
+                }
+                progress.value += 1;
+            }
+
+            const calculateTastes = (id) => {
+                let option = optionList.find(o => o.id === id);
+                Object.keys(tastes.value).forEach(k => {
+                    tastes.value[k] += option.tastes[k];
+                });
+            }
+
             onMounted(init);
 
-            return {result, suggest, questions, options}
+            return {result, questions, options, progress, selectOption}
         }
     }
 </script>

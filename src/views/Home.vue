@@ -37,9 +37,9 @@
                 return store.state.dishes
             });
 
-            onMounted(async () => {
+            onMounted(() => {
                 if (store.state.dishes.length <= 0){
-                    store.commit('getDishes');
+                    store.dispatch('getDishesAction');
                 }
             });
 

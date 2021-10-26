@@ -6,25 +6,26 @@ const initialState = {
   dishes: []
 }
 
-const persistedStateOptions = {
-  key: 'suggestDish'
-}
+const persistedState = createPersistedState({
+  key: 'suggest_dish',
+});
 
 export default createStore({
   state: initialState,
   mutations: {
-    getDishes (state) {
-      axios.get('https://script.google.com/a/macros/s-online.co.jp/s/AKfycbwvrRsYMUM52D3RCpa_OwobeAxDLtigaXcPWOucIn1rrgqTLFWsJrbofXBhGNrmnzicdQ/exec')
-          .then((res) => {
-            state.dishes = res.data;
-          }).catch((e) => {
-        alert(e);
-      });
+    setDishes (state, data) {
+      state.dishes = data
     }
   },
   actions: {
+    async getDishesAction(context) {
+      const data = await axios
+          .get('https://script.google.com/a/macros/s-online.co.jp/s/AKfycbwvrRsYMUM52D3RCpa_OwobeAxDLtigaXcPWOucIn1rrgqTLFWsJrbofXBhGNrmnzicdQ/exec')
+          .then((res) => res.data);
+      context.commit('setDishes', data);
+    }
   },
   modules: {
   },
-  plugins: [createPersistedState(persistedStateOptions)]
+  plugins: [persistedState]
 })
