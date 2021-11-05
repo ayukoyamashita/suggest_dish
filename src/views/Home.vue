@@ -12,15 +12,13 @@
                 </h1>
             </div>
 
-            <router-link :to="{ name: 'Field' }" v-if="dishes.length > 0">
-                <div class="main_link">
-                    <div class="main_link_content">
-                        <figure class="el_text">
-                            <svg class="el_img"><use xlink:href="../assets/images/start.svg#start"></use></svg>
-                        </figure>
-                    </div>
-                </div>
-            </router-link>
+            <div class="main_link">
+                <router-link :to="{ name: 'Field' }" v-if="dishes.length > 0" class="main_link_content">
+                    <figure class="el_text">
+                        <svg class="el_img"><use xlink:href="../assets/images/start.svg#start"></use></svg>
+                    </figure>
+                </router-link>
+            </div>
         </div>
     </section>
 </template>
@@ -70,7 +68,6 @@
 
             &_img {
                 width: 20%;
-                max-width: 110px;
                 filter: blur(2px) brightness(75%) contrast(50%);
             }
         }
@@ -100,67 +97,47 @@
 
             }
             &_link {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                transition: opacity .4s;
-                opacity: .7;
-
-                &:hover, &:active {
-                    opacity: .95;
-                }
-
                 &_content {
+                    transition: all 0.8s;
+                    width: 60%;
+                    max-width: 300px;
+                    padding: 8px 20px;
+                    display: block;
+                    margin: 0 auto;
+                    background: rgba(0, 0, 0, 0.4);
+                    border-radius: 30px;
+                    border: 1px solid #fff;
                     position: relative;
-                    width: 100%;
 
                     &::before {
+                        transition: all .4s;
                         content: '';
+                        display: block;
                         position: absolute;
-                        top: -20vh;
-                        left: 0;
-                        border-style: solid;
-                        border-width: 0 0 20vh 100vw;
-                        border-color: transparent transparent #fff transparent;
-                        z-index: 0;
+                        top: 0;
+                        right: 0;
+                        width: 20%;
+                        height: 100%;
+                        border-radius: 30px;
+                        background: transparent;
+                        z-index: -1;
                     }
 
-
                     .el_text {
-                        position: relative;
-                        width: 100%;
-                        background: $color-main;
-                        height: 30vh;
+                        text-align: center;
+                    }
 
+                    .el_img {
+                        height: 40px;
+                        width: 50%;
+                        fill: #fff;
+                    }
+
+                    &:hover {
+                        background: transparent;
                         &::before {
-                            content: '';
-                            display: block;
-                            height: 1vh;
+                            background: $color-accent-light;
                             width: 100%;
-                            background-color: #fff;
-                        }
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            top: -20vh;
-                            left: 0;
-                            border-style: solid;
-                            border-width: 0 0 19vh 100vw;
-                            border-color: transparent transparent $color-main transparent;
-                            padding-top: 2vh;
-                            z-index: 0;
-                        }
-                        svg {
-                            display: block;
-                            position: absolute;
-                            top: -16vh;
-                            right: 20%;
-                            width: 30%;
-                            max-width: 200px;
-                            transform: rotate(-10deg) translateX(30%) scale(1.3, 1);
-                            z-index: 1;
-                            fill: #fff;
                         }
                     }
                 }

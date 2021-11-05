@@ -2,15 +2,14 @@
     <section class="content">
         <div class="top">
             <div class="top_progress">
-                <p class="top_progress_now">Q{{ progress }}</p>
-                <p class="top_progress_max">{{ questions.length }}</p>
+                <span class="top_progress_now">Q {{ progress }}</span>
+                <span class="top_progress_max">/ {{ questions.length }}</span>
             </div>
 
             <div class="top_title">
                 <router-link :to="{ name: 'Home'}">
-
+                    <svg class="top_title_img"><use xlink:href="../assets/images/logo.svg#logo"></use></svg>
                 </router-link>
-                <svg class="top_title_img"><use xlink:href="../assets/images/logo.svg#logo"></use></svg>
             </div>
         </div>
 
@@ -133,12 +132,63 @@
 <style scoped lang="scss">
     @import '../assets/scss/_settings.scss';
 
+    $max-width: 400px;
+
+    .content {
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.85);
+        padding: 50px 0;
+    }
     .top {
-        &_title {
-            &_img {
-                fill: $color-text;
-                width: 30%;
+        width: 90%;
+        max-width: $max-width;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        &_progress {
+            text-align: center;
+            color: $color-text;
+            opacity: .9;
+
+            &_now {
+                font-weight: 600;
+                margin-right: 4px;
             }
+            &_max {
+                font-size: .8rem;
+
+            }
+        }
+        &_title {
+            overflow: hidden;
+            text-align: center;
+            flex: 1;
+
+            &_img {
+                transition: .4s;
+                height: 40px;
+                fill: #222;
+                width: 50%;
+                filter: drop-shadow(0 0 1px $color-base);
+
+                &:hover {
+                    filter: drop-shadow(0 0 2px $color-base);
+                }
+            }
+        }
+    }
+    .main {
+        width:90%;
+        max-width: $max-width;
+        margin: 0 auto;
+        text-align: center;
+
+        &_img {
+            fill: $color-text
         }
     }
 

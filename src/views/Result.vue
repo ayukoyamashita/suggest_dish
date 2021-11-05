@@ -10,21 +10,23 @@
 
         <div v-if="showDish">
             <div class="result">
-                <h2 class="result_title">『 {{ dish.name }} 』</h2>
+                <h2 class="result_title">{{ dish.name }}</h2>
+                <figure class="result_bg">
+                    <img :src="dish.image" :alt="dish.name">
+                </figure>
                 <figure class="result_img">
                     <img :src="dish.image" :alt="dish.name">
                 </figure>
             </div>
 
             <div class="search" v-if="showDish">
-                <a :href="'https://www.google.co.jp/search?q=' + dish.name" class="search_link" target="_blank">{{ dish.name }}について調べる</a>
+                <a :href="'https://www.google.co.jp/search?q=' + dish.name" class="search_link" target="_blank">ごはんを検索する</a>
             </div>
 
             <div class="back">
                 <router-link :to="{ name: 'Home' }" class="back_link">TOPに戻る</router-link>
             </div>
         </div>
-
     </section>
 </template>
 
@@ -65,7 +67,10 @@
 
     .content {
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
+        background: rgba(0, 0, 0, 0.85);
+        padding-bottom: 30px;
+        overflow: hidden;
     }
     .title {
         width: 80%;
@@ -73,12 +78,14 @@
         margin: 0 auto;
         text-align: center;
         position: relative;
+        z-index: 2;
 
         &_text {
             display: none;
         }
         &_img {
-            fill: $color-main;
+            filter: drop-shadow(0 0 2px $color-main);
+            fill: #fff;
             width: 100%;
         }
         &_result {
@@ -86,9 +93,10 @@
             bottom: -25px;
             right: -25px;
             transform: rotate(-20deg);
+            filter: drop-shadow(0 0 2px #000);
             fill: $color-accent-light;
             width: 30%;
-            z-index: 1;
+            z-index: 2;
         }
     }
     .loading {
@@ -96,36 +104,38 @@
         color: $color-main-light;
     }
     .result {
-        padding: 20px 0;
         width: 80%;
         max-width: $max-width;
-        margin: 0 auto;
-        border: 1px solid $color-accent-light;
-        border-radius: 60% 40% 66% 34% / 39% 67% 33% 61%;
+        margin: 20px auto 40px;
         position: relative;
+        z-index: 1;
 
-        &::before {
+        &_title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid #fff;
+            padding-bottom: 8px;
+        }
+        &_bg {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            content: '';
-            width: 120%;
-            height: 80%;
-            border: 1px solid $color-main-light;
-            border-radius: 71% 29% 39% 61% / 72% 24% 76% 28%;
-        }
-
-        &_title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            filter: blur(8px) opacity(20%);
+            width: 200%;
+            z-index: -1;
+            img {
+                object-fit: contain;
+                width: 100%;
+                height: auto;
+            }
         }
         &_img {
             width: 100%;
-            margin: 20px 0;
+            margin: 30px 0 20px;
              img {
                  object-fit: contain;
                  width: 100%;
@@ -134,64 +144,54 @@
              }
         }
     }
-    .search, .back{
-        width: 80%;
+    .search, .back {
         max-width: $max-width;
-        margin: 2px auto;
+        margin: 15px auto;
+        text-align: center;
 
         &_link {
-            display: inline-block;
+            transition: all 0.8s;
+            display: block;
+            padding: 8px;
+            width: 80%;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
+            border: 1px solid #fff;
             position: relative;
-            padding: 8px 0;
-            text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-weight: 600;
+            z-index: 1;
 
-            &::before, &::after {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
+            &::before {
+                transition: all .4s;
                 content: '';
-                width: 0;
-                height: 0;
-                border-style: solid;
-            }
-            &:hover {
-                opacity: 0.7;
-            }
-        }
-    }
-    .search {
-        margin-top: 20px;
-        text-align: right;
-        color: $color-main;
-
-        &_link {
-            &::before {
-                right: -15px;
-                border-width: 12px 0 12px 12px;
-                border-color: transparent transparent transparent $color-main;
-            }
-            &::after {
-                right: -12px;
-                border-width: 12px 0 12px 12px;
-                border-color: transparent transparent transparent #fff;
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 20%;
+                height: 100%;
+                border-radius: 24px;
+                background: transparent;
+                z-index: -1;
             }
         }
     }
-    .back {
-        text-align: left;
-        color: $color-main-light;
+    .search_link:hover {
+        background: transparent;
 
-        &_link {
-            &::before {
-                left: -18px;
-                border-width: 12px 12px 12px 0;
-                border-color: transparent $color-main-light transparent transparent;
-            }
-            &::after {
-                left: -15px;
-                border-width: 12px 12px 12px 0;
-                border-color: transparent #fff transparent transparent;
-            }
+        &::before {
+            background: $color-accent-light;
+            width: 100%;
+        }
+    }
+    .back_link:hover {
+        background: transparent;
+
+        &::before {
+            background: $color-main;
+            width: 100%;
         }
     }
 
