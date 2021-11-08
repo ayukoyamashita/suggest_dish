@@ -276,17 +276,6 @@
   },
   {
     "id": 26,
-    "name": "青",
-    "tastes": {
-      "heat": -1,
-      "oily": -0.5,
-      "salty": 0.5,
-      "solid": -1,
-      "sweetness": -0.5
-    }
-  },
-  {
-    "id": 27,
     "name": "黄",
     "tastes": {
       "heat": 0.5,
@@ -294,6 +283,17 @@
       "salty": 0.5,
       "solid": 0,
       "sweetness": 0.5
+    }
+  },
+  {
+    "id": 27,
+    "name": "青",
+    "tastes": {
+      "heat": -1,
+      "oily": -0.5,
+      "salty": 0.5,
+      "solid": -1,
+      "sweetness": -0.5
     }
   },
   {
