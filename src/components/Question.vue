@@ -63,16 +63,16 @@
                 right: 0;
             }
             &:first-child::before {
-                background-color: $color-main;
+                background-color: $color-accent;
             }
             &:nth-child(2)::before {
-                background-color: $color-main-light;
-            }
-            &:nth-child(3)::before {
                 background-color: $color-accent-light;
             }
+            &:nth-child(3)::before {
+                background-color: $color-main-light;
+            }
             &:last-child::before {
-                background-color: $color-accent;
+                background-color: $color-main;
             }
             &.selected {
                 &::before {
