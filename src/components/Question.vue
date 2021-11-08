@@ -1,6 +1,6 @@
 <template>
     <div class="btnGroup">
-        <button v-for="o in options" :key="o.id" class="btnGroup_btn" @click="select(o.id)">
+        <button v-for="o in options" :key="o.id" :class="selectedId === o.id ? 'btnGroup_btn selected' : 'btnGroup_btn'" @click="select(o.id)">
             <span>{{ o.name }}</span>
         </button>
     </div>
@@ -17,7 +17,9 @@
 
             const select = (id) => {
                 selectedId.value = id;
-                context.emit('selectEvent', id);
+                window.setTimeout(() => {
+                    context.emit('selectEvent', id);
+                }, 300)
             }
 
             return {selectedId, select}
@@ -72,7 +74,7 @@
             &:last-child::before {
                 background-color: $color-accent;
             }
-            &:hover {
+            &.selected {
                 &::before {
                     border-radius: 4px;
                     width: 100%;
