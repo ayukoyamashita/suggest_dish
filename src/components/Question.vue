@@ -47,35 +47,17 @@
                 transition: .4s;
                 content: '';
                 position: absolute;
-                width: 10%;
+                width: 0;
                 height: 100%;
                 top: 0;
                 z-index: -1;
-            }
-            &:nth-child(even)::before {
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
                 left: 0;
-            }
-            &:nth-child(odd)::before {
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-                right: 0;
-            }
-            &:first-child::before {
-                background-color: $color-accent;
-            }
-            &:nth-child(2)::before {
-                background-color: $color-accent-light;
-            }
-            &:nth-child(3)::before {
-                background-color: $color-main-light;
-            }
-            &:last-child::before {
-                background-color: $color-main;
             }
             &.selected {
                 &::before {
+                    background-color: $color-accent-light;
                     border-radius: 4px;
                     width: 100%;
                 }

@@ -178,12 +178,17 @@
             }
         }
     }
-    .search_link:hover {
-        background: transparent;
-
+    .search_link{
         &::before {
-            background: $color-accent-light;
-            width: 100%;
+            left: 0;
+        }
+        &:hover {
+            background: transparent;
+
+            &::before {
+                background: $color-accent-light;
+                width: 100%;
+            }
         }
     }
     .back_link:hover {

@@ -115,7 +115,7 @@
                         display: block;
                         position: absolute;
                         top: 0;
-                        right: 0;
+                        left: 0;
                         width: 20%;
                         height: 100%;
                         border-radius: 30px;
