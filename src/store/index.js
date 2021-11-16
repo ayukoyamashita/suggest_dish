@@ -3,7 +3,9 @@ import axios from "axios";
 import createPersistedState from "vuex-persistedstate";
 
 const initialState = {
-  dishes: []
+  dishes: [],
+  result: {},
+  tastes: {}
 }
 
 const persistedState = createPersistedState({
@@ -15,6 +17,12 @@ export default createStore({
   mutations: {
     setDishes (state, data) {
       state.dishes = data
+    },
+    setResult (state, data) {
+      state.result = data
+    },
+    setTastes (state, data) {
+      state.tastes = data
     }
   },
   actions: {

@@ -15,7 +15,12 @@ const routes = [
     path: '/result/:id',
     name: 'Result',
     component: () => import('../views/Result.vue')
-  }
+  },
+  {
+    path: '/index',
+    name: 'Index',
+    component: () => import('../views/Index.vue')
+  },
 ]
 
 const router = createRouter({

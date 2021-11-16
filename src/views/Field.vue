@@ -114,6 +114,8 @@
                 calculateTastes(id);
                 if( progress.value === questions.value.length) {
                     suggest();
+                    store.commit('setResult', result.value);
+                    store.commit('setTastes', tastes.value);
                     router.push({ name: 'Result', params: { id: result.value.id }});
                 }
                 progress.value += 1;

@@ -37,7 +37,7 @@
             padding: 8px 20px;
             border: 1px solid #fff;
             z-index: 1;
-            margin: 10px auto;
+            margin: 15px auto;
             position: relative;
             width: 100%;
             font-weight: 600;

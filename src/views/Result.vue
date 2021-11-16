@@ -19,8 +19,16 @@
                 </figure>
             </div>
 
+            <div class="chart" v-if="taste.length > 0 && result.length > 0">
+                <Chart :taste="taste" :result="result"></Chart>
+            </div>
+
             <div class="search" v-if="showDish">
                 <a :href="'https://www.google.co.jp/search?q=' + dish.name" class="search_link" target="_blank">ごはんを検索する</a>
+            </div>
+
+            <div class="other">
+                <router-link :to="{ name: 'Index' }" class="other_link">他のごはんをみる</router-link>
             </div>
 
             <div class="back">
@@ -35,8 +43,11 @@
     import { useRoute } from 'vue-router'
     import { useStore } from 'vuex';
 
+    import Chart from '../components/Chart';
+
     export default {
         name: 'Result',
+        components: { Chart },
         setup () {
             const route = useRoute();
             const store = useStore();
@@ -49,13 +60,23 @@
                 return typeof dish.value == 'object';
             });
 
+            const result = computed(() => {
+                let d = dish.value;
+                return [d.heat, d.oily, d.salty, d.solid, d.sweetness];
+            });
+
+            const taste = computed(() => {
+                let t = store.state.tastes;
+                return [t.heat, t.oily, t.salty, t.solid, t.sweetness];
+            });
+
             onMounted(async () => {
                 if (store.state.dishes.length <= 0){
                     store.commit('getDishes');
                 }
             });
 
-            return { dish, showDish }
+            return { dish, showDish, taste, result }
         }
     }
 </script>
@@ -144,7 +165,12 @@
              }
         }
     }
-    .search, .back {
+    .chart {
+        width: 80%;
+        max-width: $max-width;
+        margin: 20px auto 40px;
+    }
+    .search, .other, .back {
         max-width: $max-width;
         margin: 15px auto;
         text-align: center;
@@ -187,6 +213,19 @@
 
             &::before {
                 background: $color-accent-light;
+                width: 100%;
+            }
+        }
+    }
+    .other_link{
+        &::before {
+            left: 0;
+        }
+        &:hover {
+            background: transparent;
+
+            &::before {
+                background: $color-main-light;
                 width: 100%;
             }
         }
