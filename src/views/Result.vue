@@ -12,10 +12,10 @@
             <div class="result">
                 <h2 class="result_title">{{ dish.name }}</h2>
                 <figure class="result_bg">
-                    <img :src="dish.image" :alt="dish.name">
+                    <img :src="dish.image" :alt="dish.name" width="400" height="400">
                 </figure>
                 <figure class="result_img">
-                    <img :src="dish.image" :alt="dish.name">
+                    <img :src="dish.image" :alt="dish.name" width="400" height="400">
                 </figure>
             </div>
 
@@ -94,7 +94,6 @@
     .content {
         width: 100%;
         min-height: 100vh;
-        background: rgba(0, 0, 0, 0.85);
         padding-bottom: 30px;
         overflow: hidden;
     }

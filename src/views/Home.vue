@@ -1,7 +1,7 @@
 <template>
     <section class="content">
         <div class="bg" v-if="dishes.length > 0">
-            <img class="bg_img" v-for="d in dishes" :key="d.id" :src="d.image" :alt="d.name">
+            <img class="bg_img" v-for="d in dishes" :key="d.id" :src="d.image" :alt="d.name" onerror="this.remove()" width="200" height="200">
         </div>
 
         <div class="main">
@@ -53,6 +53,8 @@
         position: relative;
         z-index: 1;
         width: 100%;
+        height: 100vh;
+        background: #fff;
 
         .bg {
             z-index: 0;
@@ -60,7 +62,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             overflow: hidden;
             display: flex;
             flex-wrap: wrap;
@@ -68,6 +70,7 @@
 
             &_img {
                 width: 20%;
+                height: auto;
                 filter: blur(2px) brightness(75%) contrast(50%);
             }
         }

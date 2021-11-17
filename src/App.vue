@@ -18,6 +18,10 @@
     font-family: YuGothic,sans-serif;
   }
 
+  body {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.4s ease;

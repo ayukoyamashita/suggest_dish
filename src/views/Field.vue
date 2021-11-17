@@ -17,7 +17,7 @@
             <svg class="main_img"><use xlink:href="../assets/images/question.svg#question"></use></svg>
             <div class="main_content">
                 <div v-for="(q, i) in questions" :key="q.id" class="main_content_item">
-                    <transition name="fade">
+                    <transition name="optionFade">
                         <Question :question="q" :options="options[q.id]" v-if="progress === (i + 1)" @selectEvent="selectOption" />
                     </transition>
                 </div>
@@ -147,7 +147,6 @@
     .content {
         width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.85);
         padding: 50px 0;
     }
     .top {
@@ -212,13 +211,13 @@
         }
     }
 
-    .fade-enter-active,
-    .fade-leave-active {
+    .optionFade-enter-active,
+    .optionFade-leave-active {
         transition: opacity 0.6s ease;
     }
 
-    .fade-enter-from,
-    .fade-leave-to {
+    .optionFade-enter-from,
+    .optionFade-leave-to {
         opacity: 0;
     }
 </style>

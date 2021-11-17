@@ -13,7 +13,7 @@
 
         <div class="dishes" v-if="dishes.length > 0">
             <router-link v-for="d in dishes" :key="d.id" :to="{ name: 'Result', params: { id: d.id }}" :class=" d.id === result.id ? 'dishes_item is-suggested' : 'dishes_item'" >
-                <img :src="d.image" :alt="d.name" class="dishes_item_img">
+                <img :src="d.image" :alt="d.name" class="dishes_item_img" width="200" height="200">
                 <p class="dishes_item_name">{{ d.name }}</p>
             </router-link>
         </div>
@@ -53,7 +53,6 @@
 
     .content {
         width: 100%;
-        background: rgba(0, 0, 0, 0.85);
     }
     .top {
         width: 90%;
@@ -76,6 +75,7 @@
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        padding: 5px;
 
         &_item {
             width: 50%;
@@ -84,7 +84,7 @@
             transition: opacity .3s;
 
             &:hover {
-                opacity: .7;
+                opacity: .6;
             }
 
             &_img {
