@@ -93,8 +93,8 @@
             }
 
             const suggest = async () => {
-                let min_n = '';
-                let min_d = {};
+                let points = {};
+
                 dishes.value.forEach(d => {
                     let n = 0;
                     Object.keys(tastes.value).forEach(k => {
@@ -102,12 +102,15 @@
                     });
                     n = Math.sqrt(n)
 
-                    if ( min_n === '' || n < min_n ) {
-                        min_n = n;
-                        min_d = d;
-                    }
+                    points[d['id']] = n;
                 });
-                result.value = min_d;
+
+                let sortedDishes = dishes.value.sort((a, b) => {
+                    return points[a['id']] > points[b['id']] ? 1 : -1
+                });
+
+                result.value = sortedDishes[0];
+                store.commit('setDishes', sortedDishes);
             }
 
             const selectOption = (id) => {
@@ -117,8 +120,9 @@
                     store.commit('setResult', result.value);
                     store.commit('setTastes', tastes.value);
                     router.push({ name: 'Result', params: { id: result.value.id }});
+                } else {
+                    progress.value += 1;
                 }
-                progress.value += 1;
             }
 
             const calculateTastes = (id) => {

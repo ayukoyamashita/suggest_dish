@@ -3,7 +3,7 @@
         <h1 class="title">
             <span class="title_text">おすすめごはん</span>
             <svg class="title_img"><use xlink:href="../assets/images/logo.svg#logo"></use></svg>
-            <svg class="title_result"><use xlink:href="../assets/images/result.svg#result"></use></svg>
+            <svg class="title_result" v-if="isSuggested"><use xlink:href="../assets/images/result.svg#result"></use></svg>
         </h1>
 
         <p class="loading" v-if="!showDish">Loading...</p>
@@ -23,12 +23,12 @@
                 <Chart :taste="taste" :result="result"></Chart>
             </div>
 
-            <div class="search" v-if="showDish">
-                <a :href="'https://www.google.co.jp/search?q=' + dish.name" class="search_link" target="_blank">ごはんを検索する</a>
-            </div>
-
             <div class="other">
                 <router-link :to="{ name: 'Index' }" class="other_link">他のごはんをみる</router-link>
+            </div>
+
+            <div class="search" v-if="showDish">
+                <a :href="'https://www.google.co.jp/search?q=' + dish.name" class="search_link" target="_blank">ごはんを検索する</a>
             </div>
 
             <div class="back">
@@ -70,13 +70,18 @@
                 return [t.heat, t.oily, t.salty, t.solid, t.sweetness];
             });
 
+            const isSuggested = computed(() => {
+                let suggest = store.state.result
+                return dish.value.id === suggest.id
+            });
+
             onMounted(async () => {
                 if (store.state.dishes.length <= 0){
                     store.commit('getDishes');
                 }
             });
 
-            return { dish, showDish, taste, result }
+            return { dish, showDish, taste, result, isSuggested }
         }
     }
 </script>
@@ -172,7 +177,7 @@
     }
     .search, .other, .back {
         max-width: $max-width;
-        margin: 15px auto;
+        margin: 20px auto;
         text-align: center;
 
         &_link {

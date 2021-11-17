@@ -9,8 +9,8 @@
     export default {
         name: "Chart",
         props: {
-            taste: [],
-            result: []
+            taste: {},
+            result: {}
         },
         setup(props) {
             const renderChart = () =>{
