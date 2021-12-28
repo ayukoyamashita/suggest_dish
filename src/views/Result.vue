@@ -23,6 +23,13 @@
                 <Chart :taste="taste" :result="result"></Chart>
             </div>
 
+            <div class="feedback">
+                <p class="feedback_text">結果はいかがでしたか？</p>
+                <button @click="feedback('tabetai')" class="other_link tabetai"><i class="fas fa-laugh-wink"></i>食べたい！</button>
+                <button @click="feedback('ma-ma-')" class="other_link mama"><i class="fas fa-smile"></i>まぁまぁ</button>
+                <button @click="feedback('tabenai')" class="other_link tabenai"><i class="fas fa-dizzy"></i>食べたくない</button>
+            </div>
+
             <div class="other">
                 <router-link :to="{ name: 'Index' }" class="other_link">他のごはんをみる</router-link>
             </div>
@@ -35,19 +42,25 @@
                 <router-link :to="{ name: 'Home' }" class="back_link">TOPに戻る</router-link>
             </div>
         </div>
+        <transition name="fade">
+            <Modal value="Thank You!" v-show="showModal"></Modal>
+        </transition>
     </section>
 </template>
 
 <script>
+    import { ref } from 'vue';
     import { computed, onMounted } from 'vue';
     import { useRoute } from 'vue-router'
     import { useStore } from 'vuex';
+    import { useGtag } from "vue-gtag-next";
 
     import Chart from '../components/Chart';
+    import Modal from '../components/Modal';
 
     export default {
         name: 'Result',
-        components: { Chart },
+        components: { Chart, Modal },
         setup () {
             const route = useRoute();
             const store = useStore();
@@ -75,13 +88,23 @@
                 return dish.value.id === suggest.id
             });
 
+            const showModal = ref(false);
+            const { event } = useGtag();
+            const feedback = (value) => {
+                showModal.value = true;
+                event('feedback', {
+                    'value' : value,
+                });
+                setTimeout(() => {showModal.value = false}, 1000);
+            };
+
             onMounted(async () => {
                 if (store.state.dishes.length <= 0){
                     store.commit('getDishes');
                 }
             });
 
-            return { dish, showDish, taste, result, isSuggested }
+            return { dish, showDish, taste, result, isSuggested, showModal, feedback }
         }
     }
 </script>
@@ -241,6 +264,48 @@
             background: $color-main;
             width: 100%;
         }
+    }
+
+    .feedback {
+        max-width: 400px;
+        text-align: center;
+        margin:0 auto 30px;
+
+        &_text {
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 60%;
+            margin-bottom: 10px;
+
+            .fas {
+                font-size: 24px;
+                margin-right: 5px;
+            }
+
+            &.tabetai {
+                background-color: #b16211;
+            }
+
+            &.mama {
+                background-color: #228b42;
+            }
+
+            &.tabenai {
+                background-color: #41416e;
+            }
+        }
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.6s ease;
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
     }
 
 </style>
